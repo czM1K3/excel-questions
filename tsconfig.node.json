@@ -4,6 +4,5 @@
     "module": "esnext",
     "moduleResolution": "node"
   },
-  "include": ["vite.config.ts"],
-  "files": ["public/cetba.xlsx"]
+  "include": ["vite.config.ts"]
 }
