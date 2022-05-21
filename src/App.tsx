@@ -69,7 +69,7 @@ const App = () => {
             )}
           </>
         )}
-        <button onClick={() => pickQuestion()}>Generovat</button>
+        {data && <button onClick={() => pickQuestion()}>Generovat</button>}
       </div>      
       <div className="config">
         <a href="/cetba.xlsx">
