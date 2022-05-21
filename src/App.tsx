@@ -70,6 +70,26 @@ const App = () => {
           </>
         )}
         <button onClick={() => pickQuestion()}>Generovat</button>
+      </div>      
+      <div className="config">
+        <a href="/cetba.xlsx">
+          <button>Template</button>
+        </a>
+        <form>
+          <input type="file" onChange={async (e) => {
+            const files = e.target.files;
+            if (files && files.length === 1) {
+              const file = files[0];
+              if (!file.name.endsWith('.xlsx')) {
+                alert("Only .xlsx files are accepted");
+                return;
+              }
+              const { data, headers } = await parseXlsx(file);
+              setData(data);
+              setHeaders(headers);
+            }
+          }} />
+        </form>
       </div>
     </div>
   );
