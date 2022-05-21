@@ -7,12 +7,14 @@ import { Question } from './types/question';
 
 const App = () => {
   const [data, setData] = useState<Row[]>([]);
+  const [headers, setHeaders] = useState<Row>();
   const [question, setQuestion] = useState<Question | null>(null);
 
   useEffect(() => {
     (async () => {
-      const data = await parseXlsx();
+      const { data, headers } = await parseXlsx();
       setData(data);
+      setHeaders(headers);
     })();
   }, []);
 
@@ -48,6 +50,7 @@ const App = () => {
         {question && (
           <>
             <h1>{data[question.question][question.askingIndex].toString()}</h1>
+            {headers && <h2>{headers[question.responseIndex].toString()}:</h2>}
             {question.answers.map((answerIndex) => (
               <button
                 onClick={() => {
